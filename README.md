@@ -1,3 +1,3 @@
 # twenty-one
 
-Welcome to my Twenty-One program!
+Welcome to Twenty-One!
