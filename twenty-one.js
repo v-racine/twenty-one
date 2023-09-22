@@ -43,3 +43,21 @@ function total(FULL_DECK_CARDS) {
 }
 
 console.log(total(FULL_DECK_CARDS));
+
+
+// greets player
+function greeting() {
+  printMessage(
+    "Welcome to the game of Twenty-One! Let's play!",
+  );
+}
+
+// says goodbye to player
+function farewell() {
+  printMessage('Thanks for playing Twenty-One! Au Revoir!');
+}
+
+// displays messages to player with arrow
+function printMessage(message) {
+  console.log(`=> ${message}`);
+}
