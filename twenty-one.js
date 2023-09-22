@@ -84,9 +84,34 @@ function determineResult(playerHand, dealerHand) {
     }
   }  
 
-//  let playerHand = [[ 'H', '2' ],  [ 'S', 'A' ]];
-//  let dealerHand = [[ 'S', '2' ],  [ 'C', 'A' ]];
+//tests: 
+//  let playerHand = [[ 'H', 'Q' ],  [ 'S', 'A' ]];
+//  let dealerHand = [[ 'S', 'Q' ],  [ 'C', 'K' ], ["C", "10"]];
 //   console.log(determineResult(playerHand,dealerHand)); 
+
+function displayResults(playerHand, dealerHand) {
+  let result = determineResult(playerHand, dealerHand);
+
+  switch(result) {
+    case 'PLAYER_BUSTED':
+    printMessage('You busted! Dealer wins!');
+    break;
+  case 'DEALER_BUSTED':
+    printMessage('Dealer busted! You win!');
+    break;
+  case 'PLAYER':
+    printMessage('You win!');
+    break;
+  case 'DEALER':
+    printMessage('Dealer wins!');
+    break;
+  case 'TIE':
+    printMessage("It's a tie!");
+  }
+}
+
+//test: 
+// displayResults(playerHand, dealerHand);
 
 // greets player
 function greeting() {
