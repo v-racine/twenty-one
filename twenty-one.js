@@ -32,11 +32,7 @@ function shuffle(array) {
 shuffle(FULL_DECK_CARDS);
 
 
-
-
-
-
-
+//sums total score of cards 
 function total(FULL_DECK_CARDS) {
   let values = FULL_DECK_CARDS.map(card => card[1]);
 
