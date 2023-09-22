@@ -66,6 +66,27 @@ function busted(cards) {
   return total(cards) > BUST;
 }
 
+//determines result of one game 
+function determineResult(playerHand, dealerHand) {
+  let playerTotal = total(playerHand);
+  let dealerTotal = total(dealerHand);
+
+    if(playerTotal > BUST) {
+      return 'PLAYER_BUSTED';
+    } else if (dealerTotal > BUST) {
+      return 'DEALER_BUSTED'; 
+    } else if (dealerTotal < playerTotal) {
+      return 'PLAYER';
+    } else if (dealerTotal > playerTotal) {
+      return 'DEALER';
+    } else {
+      return 'TIE';
+    }
+  }
+
+//  let playerHand = [[ 'H', '2' ],  [ 'S', 'A' ]];
+//  let dealerHand = [[ 'S', '2' ],  [ 'C', 'A' ]];
+//   console.log(determineResult(playerHand,dealerHand)); 
 
 // greets player
 function greeting() {
