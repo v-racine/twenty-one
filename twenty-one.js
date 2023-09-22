@@ -113,6 +113,9 @@ function displayResults(playerHand, dealerHand) {
 //test: 
 // displayResults(playerHand, dealerHand);
 
+
+
+
 // greets player
 function greeting() {
   printMessage(

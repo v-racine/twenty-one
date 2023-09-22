@@ -137,7 +137,7 @@ while (true) {
 
 Thus, the player can only exit the loop when they stay or when they bust.
 
-- you'll need a `busted` function
+- need a `busted` function
 
 When the loop ends, we can recheck the conditions to see why the loop ended, and if needed, we can handle things differently.
 
@@ -160,6 +160,7 @@ function shuffle(array) {
     let otherInd = Math.floor(Math.random() * (ind + 1));
     [array[ind], array[otherInd]] = [array[otherInd], array[ind]]; //swaps elements
   }
+  return array;
 }
 ```
 
