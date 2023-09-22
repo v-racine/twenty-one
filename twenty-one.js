@@ -66,7 +66,7 @@ function busted(cards) {
   return total(cards) > BUST;
 }
 
-//determines result of one game 
+//determines winner of one game 
 function determineResult(playerHand, dealerHand) {
   let playerTotal = total(playerHand);
   let dealerTotal = total(dealerHand);
@@ -82,7 +82,7 @@ function determineResult(playerHand, dealerHand) {
     } else {
       return 'TIE';
     }
-  }
+  }  
 
 //  let playerHand = [[ 'H', '2' ],  [ 'S', 'A' ]];
 //  let dealerHand = [[ 'S', '2' ],  [ 'C', 'A' ]];
