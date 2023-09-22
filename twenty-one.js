@@ -4,6 +4,7 @@ const SUITS = ["H", "S", "D", "C"];
 const CARDS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 const FULL_DECK_CARDS = createDeck()
 
+const BUST = 21;
 
 
 //creates nested array of full deck of cards 
@@ -33,8 +34,8 @@ shuffle(FULL_DECK_CARDS);
 
 
 //sums total score of cards 
-function total(FULL_DECK_CARDS) {
-  let values = FULL_DECK_CARDS.map(card => card[1]);
+function total(cards) {
+  let values = cards.map(card => card[1]);
 
   let sum = 0;
   values.forEach(value => {
@@ -49,7 +50,7 @@ function total(FULL_DECK_CARDS) {
 
   //correction for Aces
   values.filter(value => value === "A").forEach(_ => { //? 
-    if (sum > 21) {
+    if (sum > BUST) {
       sum -= 10;
     }
   })
@@ -58,6 +59,12 @@ function total(FULL_DECK_CARDS) {
 }
 
 console.log(total(FULL_DECK_CARDS));
+
+
+//determines when card score total exceeds 21; returns boolean
+function busted(cards) {
+  return total(cards) > BUST;
+}
 
 
 // greets player
