@@ -18,7 +18,6 @@ function createDeck() {
 const FULL_DECK_CARDS = createDeck()
 
 
-
 function total(FULL_DECK_CARDS) {
   let values = FULL_DECK_CARDS.map(card => card[1]);
 
