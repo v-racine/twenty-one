@@ -2,7 +2,11 @@ const readline = require('readline-sync');
 
 const SUITS = ["H", "S", "D", "C"]; 
 const CARDS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+const FULL_DECK_CARDS = createDeck()
 
+
+
+//creates nested array of full deck of cards 
 function createDeck() {
   let deck = [];
 
@@ -15,7 +19,22 @@ function createDeck() {
   return deck; 
 }
 
-const FULL_DECK_CARDS = createDeck()
+//shuffles an array 
+function shuffle(array) {
+  for (let ind = array.length - 1; ind > 0; ind--) {
+    let otherInd = Math.floor(Math.random() * (ind + 1));
+    [array[ind], array[otherInd]] = [array[otherInd], array[ind]]; //swaps elements
+  }
+
+  return array;
+}
+
+shuffle(FULL_DECK_CARDS);
+
+
+
+
+
 
 
 function total(FULL_DECK_CARDS) {
