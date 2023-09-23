@@ -6,6 +6,18 @@ const FULL_DECK_CARDS = createDeck()
 
 const BUST = 21;
 
+/*MAIN FUNCTION*/
+
+function playTwentyOne () {
+  greeting();
+}
+
+playTwentyOne();
+
+/*HELPER FUNCTIONS*/
+
+
+
 
 //creates nested array of full deck of cards 
 function createDeck() {
