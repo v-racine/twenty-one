@@ -17,8 +17,6 @@ playTwentyOne();
 /*HELPER FUNCTIONS*/
 
 
-
-
 //creates nested array of full deck of cards 
 function createDeck() {
   let deck = [];
@@ -42,7 +40,38 @@ function shuffle(array) {
   return array;
 }
 
-shuffle(FULL_DECK_CARDS);
+const shuffledCards = shuffle(FULL_DECK_CARDS);
+
+//determines initial deal of cards for player and dealer, respectively
+function initialDealForPlayer(deck) {
+  let playerCards = [];
+   
+  playerCards.push(...popTwoFromDeck(deck));
+
+  return playerCards;
+}
+
+function initialDealForDealer(deck) {
+  let dealerCards = [];
+  dealerCards.push(...popTwoFromDeck(deck));
+
+  return dealerCards;
+}
+//tests
+// console.log(initialDealForPlayer(shuffledCards));
+// console.log(initialDealForDealer(shuffledCards));
+
+const playerCards = initialDealForPlayer(shuffledCards);
+const dealerCards = initialDealForDealer(shuffledCards)
+
+//display initial deal of cards to player 
+function displayInitialDeal(playerCards, dealerCards) {
+  printMessage(`Dealer has ${dealerCards[0]} and ?`);
+  printMessage(`You have: ${playerCards[0]} and ${playerCards[1]}, for a total of ${total(playerCards)}.`);
+}
+//test
+// console.log(displayInitialDeal(playerCards, dealerCards));
+displayInitialDeal(playerCards, dealerCards);
 
 
 //sums total score of cards 
@@ -150,8 +179,10 @@ function popTwoFromDeck(deck) {
 }
 //test:
 //console.log(popTwoFromDeck(FULL_DECK_CARDS))
+popTwoFromDeck(FULL_DECK_CARDS);
 
-let cards = (popTwoFromDeck(FULL_DECK_CARDS));
+
+//let cards = (popTwoFromDeck(shuffledCards));
 
 function hand(cards) {
   return cards.map(card => `${card[1]}${card[0]}`).join(" ");
