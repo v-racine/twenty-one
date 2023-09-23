@@ -109,12 +109,28 @@ function displayResults(playerHand, dealerHand) {
     printMessage("It's a tie!");
   }
 }
-
 //test: 
 // displayResults(playerHand, dealerHand);
 
+// determines & validates whether player wants to play another game
+function playAgain(anotherGame) {
+  const validYesOrNo = ['yes', 'no'];
 
+  printMessage(
+    `Do you want to play again? Choose ${validYesOrNo.join(' or ')}.`,
+  );
+  anotherGame = readline.question().toLowerCase();
 
+  while (
+    !validYesOrNo.includes(anotherGame) &&
+    anotherGame !== 'n' &&
+    anotherGame !== 'y'
+  ) {
+    printMessage("Please choose: 'yes' or 'no'.");
+    anotherGame = readline.question().toLocaleLowerCase();
+  }
+  return anotherGame;
+}
 
 // greets player
 function greeting() {
