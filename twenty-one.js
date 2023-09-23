@@ -132,6 +132,22 @@ function playAgain(anotherGame) {
   return anotherGame;
 }
 
+//to pop two cards from FULL_DECK_CARDS
+function popTwoFromDeck(deck) {
+  return [deck.pop(), deck.pop()];
+}
+//test:
+//console.log(popTwoFromDeck(FULL_DECK_CARDS))
+
+let cards = (popTwoFromDeck(FULL_DECK_CARDS));
+
+function hand(cards) {
+  return cards.map(card => `${card[1]}${card[0]}`).join(" ");
+}
+// //test:
+// console.log(hand(cards));
+
+
 // greets player
 function greeting() {
   printMessage(
