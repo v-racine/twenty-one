@@ -11,6 +11,9 @@ const BUST = 21;
 function playTwentyOne () {
   greeting();
 
+  let anotherGame = "y";
+  while (anotherGame[0] === "y") {
+
   const shuffledCards = shuffle(FULL_DECK_CARDS);
   const playerCards = initialDealForPlayer(shuffledCards);
   const dealerCards = initialDealForDealer(shuffledCards)
@@ -20,6 +23,12 @@ function playTwentyOne () {
   playerTurn(playerCards, dealerCards, shuffledCards);
   dealerTurn(playerCards, dealerCards, shuffledCards);
   stays(playerCards, dealerCards);
+
+  anotherGame = playAgain(anotherGame);
+  console.clear();
+  }
+
+  farewell(); 
 
 }
 
@@ -128,6 +137,8 @@ function playerTurn(playerCards, dealerCards, deck) {
 
 //determines dealer's move
 function dealerTurn(playerCards, dealerCards, deck) {
+  if (!busted(playerCards)) {
+
   printMessage("Dealer turn...");
 
   while (total(dealerCards) < 17) {
@@ -138,11 +149,12 @@ function dealerTurn(playerCards, dealerCards, deck) {
 
   if (busted(dealerCards)) {
     printMessage(`Dealer's total is now ${total(dealerCards)}`);
-    displayResults(playerCards, dealerCards);
+    //displayResults(playerCards, dealerCards);
   } else {
     printMessage(`Dealer stays at ${total(dealerCards)}`);
   }
 
+  }  
 }
 
 //test:
@@ -263,13 +275,13 @@ function hand(cards) {
 //GENERIC FUNCTIONS:
 
 // determines & validates whether player wants to play another game
-function playAgain() {
+function playAgain(anotherGame) {
   const validYesOrNo = ['yes', 'no'];
 
   printMessage(
     `Do you want to play again? Choose ${validYesOrNo.join(' or ')}.`,
   );
-  let anotherGame = readline.question().toLowerCase();
+  anotherGame = readline.question().toLowerCase();
 
   while (
     !validYesOrNo.includes(anotherGame) &&
