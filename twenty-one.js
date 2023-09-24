@@ -114,7 +114,7 @@ function playerTurn(playerCards, dealerCards, deck) {
 playerTurn(playerCards, dealerCards, shuffledCards);
 
 //determines dealer's move
-function dealerTurn(dealerCards, deck) {
+function dealerTurn(playerCards, dealerCards, deck) {
   printMessage("Dealer turn...");
 
   while (total(dealerCards) < 17) {
@@ -123,9 +123,16 @@ function dealerTurn(dealerCards, deck) {
     printMessage(`Dealer's cards are now: ${hand(dealerCards)}`)
   }
 
+  if (busted(dealerCards)) {
+    printMessage(`Dealer's total is now ${total(dealerCards)}`);
+    displayResults(playerCards, dealerCards);
+  } else {
+    printMessage(`Dealer stays at ${total(dealerCards)}`);
+  }
+
 }
 
-dealerTurn(dealerCards, shuffledCards)
+dealerTurn(playerCards, dealerCards, shuffledCards)
 
 //sums total score of cards 
 function total(cards) {
