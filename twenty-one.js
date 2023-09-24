@@ -85,11 +85,15 @@ function determinePlayerChoice() {
   return playerChoice;
 }
 
-let playerChoice = determinePlayerChoice();
+//test
+//let playerChoice = determinePlayerChoice();
 
 //determines player's moves
-function playerTurn(playerChoice, playerCards, dealerCards, deck) {
+function playerTurn(playerCards, dealerCards, deck) {
   while (true) {
+   
+    let playerChoice = determinePlayerChoice();
+    
     if (playerChoice === "h") {
       playerCards.push(deck.pop());
       printMessage("You chose to hit!");
@@ -107,7 +111,7 @@ function playerTurn(playerChoice, playerCards, dealerCards, deck) {
   }
 } 
 
-playerTurn(playerChoice, playerCards, dealerCards, shuffledCards);
+playerTurn(playerCards, dealerCards, shuffledCards);
 
 //sums total score of cards 
 function total(cards) {
