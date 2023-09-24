@@ -73,6 +73,41 @@ function displayInitialDeal(playerCards, dealerCards) {
 // console.log(displayInitialDeal(playerCards, dealerCards));
 displayInitialDeal(playerCards, dealerCards);
 
+//determines player's choice
+function determinePlayerChoice() {
+  let playerChoice;
+    while (true) {
+      printMessage("Would you like to [h]it or [s]tay?");
+      playerChoice = readline.question().toLocaleLowerCase();
+      if (["h", "s"].includes(playerChoice)) break;
+      printMessage("Sorry, that's not a valid choice. Please choose 'h' or 's'.")
+    }
+  return playerChoice;
+}
+
+let playerChoice = determinePlayerChoice();
+
+//determines player's moves
+function playerTurn(playerChoice, playerCards, dealerCards, deck) {
+  while (true) {
+    if (playerChoice === "h") {
+      playerCards.push(deck.pop());
+      printMessage("You chose to hit!");
+      printMessage(`Your cards are now ${hand(playerCards)}`);
+      printMessage(`Your total is now: ${total(playerCards)}`)
+    } 
+
+    if (playerChoice === "s" || busted(playerCards)) break;
+  }
+
+  if (busted(playerCards)) {
+    displayResults(playerCards, dealerCards);
+  } else {
+    printMessage(`You stayed at ${total(playerCards)}.`);
+  }
+} 
+
+playerTurn(playerChoice, playerCards, dealerCards, shuffledCards);
 
 //sums total score of cards 
 function total(cards) {
