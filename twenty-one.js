@@ -6,10 +6,21 @@ const FULL_DECK_CARDS = createDeck()
 
 const BUST = 21;
 
-/*MAIN FUNCTION*/
+/*MAIN GAME FUNCTION*/
 
 function playTwentyOne () {
   greeting();
+
+  const shuffledCards = shuffle(FULL_DECK_CARDS);
+  const playerCards = initialDealForPlayer(shuffledCards);
+  const dealerCards = initialDealForDealer(shuffledCards)
+
+  displayInitialDeal(playerCards, dealerCards);
+
+  playerTurn(playerCards, dealerCards, shuffledCards);
+  dealerTurn(playerCards, dealerCards, shuffledCards);
+  stays(playerCards, dealerCards);
+
 }
 
 playTwentyOne();
@@ -40,7 +51,8 @@ function shuffle(array) {
   return array;
 }
 
-const shuffledCards = shuffle(FULL_DECK_CARDS);
+//test:
+//const shuffledCards = shuffle(FULL_DECK_CARDS);
 
 //determines initial deal of cards for player and dealer, respectively
 function initialDealForPlayer(deck) {
@@ -61,8 +73,8 @@ function initialDealForDealer(deck) {
 // console.log(initialDealForPlayer(shuffledCards));
 // console.log(initialDealForDealer(shuffledCards));
 
-const playerCards = initialDealForPlayer(shuffledCards);
-const dealerCards = initialDealForDealer(shuffledCards)
+// const playerCards = initialDealForPlayer(shuffledCards);
+// const dealerCards = initialDealForDealer(shuffledCards);
 
 //display initial deal of cards to player 
 function displayInitialDeal(playerCards, dealerCards) {
@@ -71,7 +83,7 @@ function displayInitialDeal(playerCards, dealerCards) {
 }
 //test
 // console.log(displayInitialDeal(playerCards, dealerCards));
-displayInitialDeal(playerCards, dealerCards);
+//displayInitialDeal(playerCards, dealerCards);
 
 //determines player's choice
 function determinePlayerChoice() {
@@ -111,7 +123,8 @@ function playerTurn(playerCards, dealerCards, deck) {
   }
 } 
 
-playerTurn(playerCards, dealerCards, shuffledCards);
+//test:
+//playerTurn(playerCards, dealerCards, shuffledCards);
 
 //determines dealer's move
 function dealerTurn(playerCards, dealerCards, deck) {
@@ -132,7 +145,8 @@ function dealerTurn(playerCards, dealerCards, deck) {
 
 }
 
-dealerTurn(playerCards, dealerCards, shuffledCards);
+//test:
+//dealerTurn(playerCards, dealerCards, shuffledCards);
 
 function stays(playerCards, dealerCards) {
   console.log('==============');
@@ -143,7 +157,11 @@ function stays(playerCards, dealerCards) {
   displayResults(playerCards, dealerCards);
 }
 
-stays(playerCards, dealerCards);
+//test:
+//stays(playerCards, dealerCards);
+
+
+//HELPERS for HELPER FUNCTIONS: 
 
 //sums total score of cards 
 function total(cards) {
@@ -170,7 +188,8 @@ function total(cards) {
   return sum
 }
 
-console.log(total(FULL_DECK_CARDS));
+//tests:
+//console.log(total(FULL_DECK_CARDS));
 
 
 //determines when card score total exceeds 21; returns boolean
@@ -224,14 +243,33 @@ function displayResults(playerHand, dealerHand) {
 //test: 
 // displayResults(playerHand, dealerHand);
 
+//to pop two cards from FULL_DECK_CARDS
+function popTwoFromDeck(deck) {
+  return [deck.pop(), deck.pop()];
+}
+//test:
+//console.log(popTwoFromDeck(FULL_DECK_CARDS))
+//popTwoFromDeck(FULL_DECK_CARDS);
+
+// let cards = (popTwoFromDeck(shuffledCards));
+
+function hand(cards) {
+  return cards.map(card => `${card[1]}${card[0]}`).join(" ");
+}
+// //test:
+// console.log(hand(cards));
+
+
+//GENERIC FUNCTIONS:
+
 // determines & validates whether player wants to play another game
-function playAgain(anotherGame) {
+function playAgain() {
   const validYesOrNo = ['yes', 'no'];
 
   printMessage(
     `Do you want to play again? Choose ${validYesOrNo.join(' or ')}.`,
   );
-  anotherGame = readline.question().toLowerCase();
+  let anotherGame = readline.question().toLowerCase();
 
   while (
     !validYesOrNo.includes(anotherGame) &&
@@ -243,23 +281,6 @@ function playAgain(anotherGame) {
   }
   return anotherGame;
 }
-
-//to pop two cards from FULL_DECK_CARDS
-function popTwoFromDeck(deck) {
-  return [deck.pop(), deck.pop()];
-}
-//test:
-//console.log(popTwoFromDeck(FULL_DECK_CARDS))
-popTwoFromDeck(FULL_DECK_CARDS);
-
-
-//let cards = (popTwoFromDeck(shuffledCards));
-
-function hand(cards) {
-  return cards.map(card => `${card[1]}${card[0]}`).join(" ");
-}
-// //test:
-// console.log(hand(cards));
 
 
 // greets player
