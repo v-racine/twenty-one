@@ -113,6 +113,20 @@ function playerTurn(playerCards, dealerCards, deck) {
 
 playerTurn(playerCards, dealerCards, shuffledCards);
 
+//determines dealer's move
+function dealerTurn(dealerCards, deck) {
+  printMessage("Dealer turn...");
+
+  while (total(dealerCards) < 17) {
+    printMessage("Dealer hits!");
+    dealerCards.push(deck.pop())
+    printMessage(`Dealer's cards are now: ${hand(dealerCards)}`)
+  }
+
+}
+
+dealerTurn(dealerCards, shuffledCards)
+
 //sums total score of cards 
 function total(cards) {
   let values = cards.map(card => card[1]);
