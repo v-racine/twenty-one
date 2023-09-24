@@ -50,7 +50,7 @@ function createDeck() {
   return deck; 
 }
 
-//shuffles an array 
+//shuffles the deck of cards 
 function shuffle(array) {
   for (let ind = array.length - 1; ind > 0; ind--) {
     let otherInd = Math.floor(Math.random() * (ind + 1));
@@ -91,7 +91,7 @@ function displayInitialDeal(playerCards, dealerCards) {
   printMessage(`You have: ${playerCards[0]} and ${playerCards[1]}, for a total of ${total(playerCards)}.`);
 }
 //test
-// console.log(displayInitialDeal(playerCards, dealerCards));
+//console.log(displayInitialDeal(playerCards, dealerCards));
 //displayInitialDeal(playerCards, dealerCards);
 
 //determines player's choice
@@ -106,7 +106,7 @@ function determinePlayerChoice() {
   return playerChoice;
 }
 
-//test
+//test:
 //let playerChoice = determinePlayerChoice();
 
 //determines player's moves
@@ -204,12 +204,12 @@ function total(cards) {
 //console.log(total(FULL_DECK_CARDS));
 
 
-//determines when card score total exceeds 21; returns boolean
+//determines when cards total exceeds 21; returns boolean
 function busted(cards) {
   return total(cards) > BUST;
 }
 
-//determines winner of one game 
+//determines winner of game 
 function determineResult(playerHand, dealerHand) {
   let playerTotal = total(playerHand);
   let dealerTotal = total(dealerHand);
@@ -265,6 +265,7 @@ function popTwoFromDeck(deck) {
 
 // let cards = (popTwoFromDeck(shuffledCards));
 
+//to show dealt hand 
 function hand(cards) {
   return cards.map(card => `${card[1]}${card[0]}`).join(" ");
 }
