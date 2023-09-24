@@ -132,7 +132,18 @@ function dealerTurn(playerCards, dealerCards, deck) {
 
 }
 
-dealerTurn(playerCards, dealerCards, shuffledCards)
+dealerTurn(playerCards, dealerCards, shuffledCards);
+
+function stays(playerCards, dealerCards) {
+  console.log('==============');
+  printMessage(`Dealer has ${dealerCards}, for a total of: ${total(dealerCards)}`);
+  printMessage(`Player has ${playerCards}, for a total of: ${total(playerCards)}`);
+  console.log('==============');
+
+  displayResults(playerCards, dealerCards);
+}
+
+stays(playerCards, dealerCards);
 
 //sums total score of cards 
 function total(cards) {
