@@ -3,8 +3,9 @@ const readline = require('readline-sync');
 const SUITS = ["H", "S", "D", "C"]; 
 const CARDS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 const FULL_DECK_CARDS = createDeck()
-
 const BUST = 21;
+const DEALER_MAX = 17;
+
 
 /*MAIN GAME FUNCTION*/
 
@@ -141,7 +142,7 @@ function dealerTurn(playerCards, dealerCards, deck) {
 
   printMessage("Dealer turn...");
 
-  while (total(dealerCards) < 17) {
+  while (total(dealerCards) < DEALER_MAX) {
     printMessage("Dealer hits!");
     dealerCards.push(deck.pop())
     printMessage(`Dealer's cards are now: ${hand(dealerCards)}`)
@@ -202,7 +203,6 @@ function total(cards) {
 
 //tests:
 //console.log(total(FULL_DECK_CARDS));
-
 
 //determines when cards total exceeds 21; returns boolean
 function busted(cards) {
