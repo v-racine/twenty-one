@@ -5,6 +5,7 @@ const CARDS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
 const FULL_DECK_CARDS = createDeck()
 const BUST = 21;
 const DEALER_MAX = 17;
+const HIT_OR_STAY_INPUTS = ["h", "hit", "s", "stay"]
 
 
 /*MAIN GAME FUNCTION*/
@@ -97,13 +98,15 @@ function displayInitialDeal(playerCards, dealerCards) {
 
 //determines player's choice
 function determinePlayerChoice() {
-  let playerChoice;
-    while (true) {
-      printMessage("Would you like to [h]it or [s]tay?");
-      playerChoice = readline.question().toLocaleLowerCase();
-      if (["h", "s"].includes(playerChoice)) break;
-      printMessage("Sorry, that's not a valid choice. Please choose 'h' or 's'.")
+
+  printMessage("Would you like to hit or stay?");
+  let playerChoice = readline.question().toLowerCase();
+    
+  while (!HIT_OR_STAY_INPUTS.includes(playerChoice)) {
+      printMessage("Sorry, that's not a valid choice. Please choose 'hit' or 'stay'.")
+      playerChoice = readline.question().toLowerCase();  
     }
+
   return playerChoice;
 }
 
@@ -116,22 +119,24 @@ function playerTurn(playerCards, dealerCards, deck) {
    
     let playerChoice = determinePlayerChoice();
     
-    if (playerChoice === "h") {
+    if (playerChoice === HIT_OR_STAY_INPUTS[0] || playerChoice === HIT_OR_STAY_INPUTS[1]) {
       playerCards.push(deck.pop());
       printMessage("You chose to hit!");
       printMessage(`Your cards are now ${hand(playerCards)}`);
       printMessage(`Your total is now: ${total(playerCards)}`)
     } 
 
-    if (playerChoice === "s" || busted(playerCards)) break;
-  }
-
+    if (playerChoice === HIT_OR_STAY_INPUTS[2] || playerChoice === HIT_OR_STAY_INPUTS[3] ||
+        busted(playerCards)) {
+        break;
+    }
+  }  
   if (busted(playerCards)) {
     displayResults(playerCards, dealerCards);
   } else {
     printMessage(`You stayed at ${total(playerCards)}.`);
-  }
-} 
+  } 
+}
 
 //test:
 //playerTurn(playerCards, dealerCards, shuffledCards);
