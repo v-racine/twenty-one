@@ -88,8 +88,8 @@ function initialDealForDealer(deck) {
 
 //display initial deal of cards to player 
 function displayInitialDeal(playerCards, dealerCards) {
-  printMessage(`Dealer has ${dealerCards[0]} and ?`);
-  printMessage(`You have: ${playerCards[0]} and ${playerCards[1]}, for a total of ${total(playerCards)}.`);
+  printMessage(`Dealer has ${dealerCards[0].join("")} and ?`);
+  printMessage(`You have: ${playerCards[0].join("")} and ${playerCards[1].join("")}, for a total of ${total(playerCards)}.`);
 }
 //test
 //console.log(displayInitialDeal(playerCards, dealerCards));
