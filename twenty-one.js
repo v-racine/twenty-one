@@ -291,7 +291,7 @@ function playAgain(anotherGame) {
 
   while (!validYesOrNo.includes(anotherGame)) {
     printMessage("Please choose: 'yes' or 'no'.");
-    anotherGame = readline.question().toLocaleLowerCase();
+    anotherGame = readline.question().toLowerCase();
   }
   return anotherGame;
 }
